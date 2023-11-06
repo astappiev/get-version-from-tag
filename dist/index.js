@@ -30226,8 +30226,15 @@ async function run() {
         if (tag.startsWith("v")) {
             tag = tag.substring(1);
         }
-
         _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`Version: ${tag}`);
+
+        const format = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('format');
+        _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`Format: ${format}`);
+
+        if (format === 'tomcat') {
+            tag = tag.split('.').map((v) => v.padStart(3, '0')).join('.');
+        }
+
         _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("version", tag);
     } catch (error) {
         _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);

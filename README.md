@@ -9,9 +9,9 @@ Here's example full Release YAML you can use:
 
 Inputs:
 
-| Param name | Description                                                                                                                                    | Default value |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| `format`   | Format to apply to the version tag.<br/>Possible values:<br/>- **tomcat**: adds paddings to each section of a tag, e.g. `1.2.3 => 001.002.003` | *empty*       |
+| Param name | Description                                                                                                                                  | Default value |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| `format`   | Format to apply to the version tag.<br/>Possible values:<br/>- `tomcat`: adds paddings to each section of a tag, e.g. `1.2.3 => 001.002.003` | `default`     |
 
 ```yml
 name: Release
@@ -19,7 +19,6 @@ name: Release
 on:
   release:
     types:
-      - edited
       - released
 
 jobs:
@@ -29,6 +28,8 @@ jobs:
       - id: get_version
         name: Get version
         uses: astappiev/get-version-from-tag@v1
+        with:
+          format: 'tomcat'
 
       - name: Display version
         run: |

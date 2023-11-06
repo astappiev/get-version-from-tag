@@ -5,11 +5,11 @@ branding:
   icon: "git-branch"
   color: "blue"
 
-# Define your inputs here.
 inputs:
   format:
     description: 'Format of the version number'
-    required: false
+    required: true
+    default: 'default'
 
 outputs:
   version:

@@ -20,9 +20,12 @@ export async function run() {
         core.info(`Version: ${tag}`);
 
         const format = core.getInput('format');
+        core.info(`Format: ${format}`);
+
         if (format === 'tomcat') {
             tag = tag.split('.').map((v) => v.padStart(3, '0')).join('.');
         }
+
         core.setOutput("version", tag);
     } catch (error) {
         core.setFailed(error.message);
